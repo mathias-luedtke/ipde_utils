@@ -1,0 +1,25 @@
+version: '2'
+services:
+  apt-cacher-ng:
+    image: sameersbn/apt-cacher-ng:latest
+    ports:
+      - "3142:3142"
+    volumes:
+      - apt-cacher-ng:/var/cache/apt-cacher-ng
+    restart: always
+  ipde-server:
+    image: reapp/server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - reapp-db:/db
+    ports:
+      - "8000:8000"
+    environment:
+      - SQLALCHEMY_DATABASE_URI=sqlite:////db/app.db
+      - APT_EXTRA_OPTS=-o Acquire::http::Proxy=http://172.17.0.1:3142
+      - IPDE_TRUSTED_IMAGES=reapp/core reapp/testing 
+    hostname: localhost
+volumes:
+  apt-cacher-ng:
+  reapp-db:
+
