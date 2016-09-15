@@ -41,7 +41,7 @@ Variaous REST api functions, is meant to be sourced.
 #### ./list.sh
 Print all sessions and their state
 
-### ./deploy.sh 
+#### ./deploy.sh 
 `./deploy.sh label package launch_file [extra_paths *]`
 
 Creates/overwrite a session with the given label.
@@ -50,18 +50,18 @@ The second and third arguments denote the main package and launch file.
 All extra paths get uploaded into the session.
 VCS paths and hidden files are exluded per default and have to be listed explicitly.
 
-### ./rm.sh 
+#### ./rm.sh 
 `./rm.sh label`
 
 Deletes the session with the given name.
 
-### ./build.sh 
+#### ./build.sh 
 `./build.sh label`
 
 Builds the session with the given name und print the output.
 **Stopping the script  does not stop the build!**
 
-### ./run.sh 
+#### ./run.sh 
 `./run.sh label`
 
 Runs the session with the given name und print the output.
@@ -69,37 +69,33 @@ If another session is already running, it will be stopped.
 **Stopping the script does not stop the run!**
 
 
-### ./stop.sh 
+#### ./stop.sh 
 `./stop.sh label`
 
 Stops the running session with the given name und print the output.
 
-### ./logs.sh 
+#### ./logs.sh 
 `./logs.sh label [build|run] [tail]`
 
 Print the build or run logs for the given session.
 For stopped builds/runs the log can be truncated with the tail argument, otherwise logs get streamed.
 
-### ./launch.sh 
+#### ./launch.sh 
 `./launch.sh label package launch_file [extra_paths *]`
 
 Deploys, builds and runs the launchfile.
 If the scrpt if interrupted (ctrl+c), the launchfile will be stopped.
 
-### ./create_external.sh 
+#### ./create_external.sh 
 `./launch.sh label package launch_file [extra_paths *]`
 
 Cretae session that uses released packagem cannot resolve launch file paths automatically.
 
-### ./create_test.sh 
+#### ./create_test.sh 
 `./launch.sh label package [extra_paths *]`
 
 Like `deploy.sh`, but uses creates testing session for given package.
 
-### ./testing.sh 
+#### ./testing.sh 
 
 Like `launch.sh`, but creates and runs testing session.
-
-
-
-
