@@ -1,13 +1,13 @@
 #!/bin/bash -e
 source helper.bash
 
-help="usage: $0 label packages launch_file [extra_paths *]"
+help="usage: $0 label package launch_file [extra_paths *]"
 
 label=$1
 shift  || error "no label given, $help"
 
 pkg=$1
-shift || error "no packages given, $help"
+shift || error "no package given, $help"
 
 launch=$1
 shift || error "no launch file given, $help"
