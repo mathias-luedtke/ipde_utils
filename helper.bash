@@ -84,7 +84,7 @@ function check_state {
 }
 
 function build {
-    curl -X PUT -F "logs=1" "$1/build"
+    curl -N -X PUT -F "logs=1" "$1/build"
     check_state "$1/build" done
 }
 
@@ -100,7 +100,7 @@ function stop {
 }
 
 function logs {
-    curl "$1/$2/logs?tail=${3:--1}"
+    curl -N "$1/$2/logs?tail=${3:--1}"
 }
 
 function delete {
