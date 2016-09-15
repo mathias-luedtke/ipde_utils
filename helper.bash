@@ -41,7 +41,6 @@ function upload {
 function configure {
     curl_xml -X PUT -F "config=<-" "$1/config"
 }
-
 function configure_launch {
 configure "$1" << EOF
 <?xml version="1.0" ?>
@@ -60,6 +59,24 @@ configure "$1" << EOF
     <ipde:world/>
 </ipde:config>
 EOF
+}
+
+function get_pkg_dir {
+    if [ -f "$1/package.xml" ]
+    then 
+        (cd "$1"; pwd -P)
+    else
+        rospack find "$pkg"
+    fi
+}
+
+function get_pkg_name {
+    sed -n -e 's!.*<name>\([^<]*\)</name>.*!\1!p' "$1/package.xml"
+}
+
+function configure_pkg_launch {
+    local launch_full_path=$(find "$2" -name "$3")
+    configure_launch "$1" "$(get_pkg_name $2)" "${launch_full_path#$2/}" 
 }
 
 function check_state {

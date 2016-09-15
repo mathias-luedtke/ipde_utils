@@ -43,9 +43,9 @@ Print all sessions and their state
 
 ### ./deploy.sh 
 `./deploy.sh label package launch_file [extra_paths *]`
-**Needs ROS setup.bash to be sourced**
 
 Creates/overwrite a session with the given label.
+Package can be a name (**Needs ROS setup.bash to be sourced**) or a directory.
 The second and third arguments denote the main package and launch file.
 All extra paths get uploaded into the session.
 VCS paths and hidden files are exluded per default and have to be listed explicitly.

@@ -19,12 +19,9 @@ then
   error "could not obtain session URI"
 fi
 
-pkg_dir=$(rospack find "$pkg")
+pkg_dir=$(get_pkg_dir $pkg)
 
-launch_full_path=$(find "$pkg_dir" -name "$launch")
-launch_path=${launch_full_path#$pkg_dir/}
-
-configure_launch "$session" "$pkg" "$launch_path"
+configure_pkg_launch "$session" "$pkg_dir" "$launch"
 
 send_src "$pkg_dir" "$session"
 
