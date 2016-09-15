@@ -5,7 +5,7 @@
 In this directory:
 
 1. Install docker: `./setup_docker.sh` (you might need to log out and in again)
-1. `docker-compose up -d` (runs server in detached mode, use `docker-compose down` for stopping it)
+1. `docker-compose up -d` (runs server in detached mode, use `docker-compose stop` for stopping it)
 1. source your catkin workspace **optional**
 1. `./launch.sh test YOUR_PACKAGE_NAME_OR_DIR LAUNCH_FILE_NAME_OR_PATH` (test is the arbitrary name of the session, whitespace needs to be escaped)
 
