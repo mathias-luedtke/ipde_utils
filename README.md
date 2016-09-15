@@ -82,7 +82,24 @@ For stopped builds/runs the log can be truncated with the tail argument, otherwi
 
 ### ./launch.sh 
 `./launch.sh label package launch_file [extra_paths *]`
-**Needs ROS setup.bash to be sourced**
 
 Deploys, builds and runs the launchfile.
 If the scrpt if interrupted (ctrl+c), the launchfile will be stopped.
+
+### ./create_external.sh 
+`./launch.sh label package launch_file [extra_paths *]`
+
+Cretae session that uses released packagem cannot resolve launch file paths automatically.
+
+### ./create_test.sh 
+`./launch.sh label package [extra_paths *]`
+
+Like `deploy.sh`, but uses creates testing session for given package.
+
+### ./testing.sh 
+
+Like `launch.sh`, but creates and runs testing session.
+
+
+
+
