@@ -73,12 +73,13 @@ function build {
 
 function run {
     check_state "$1/build" done || error "build was not succesful"
-    curl -X PUT -F "force_switch=1" "$1/run"
-    check_state "$1/run" in_progress || error "build was not succesful"
+    curl -sS -X PUT -F "force_switch=1" "$1/run" > /dev/null
+    check_state "$1/run" in_progress || error "run failed"
 }
 
 function stop {
-    curl -X PUT -F "run_state=done" "$1/run"
+    curl -sS -X PUT -F "run_state=done" "$1/run" > /dev/null
+    check_state "$1/run" done || error "did not stop"
 }
 
 function logs {
