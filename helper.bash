@@ -35,7 +35,7 @@ function create_session {
 }
 
 function upload {
-    curl_xml -X PUT -F "${2:-file}=@-" "$1"
+    curl_xml -X PUT -F "${3:-file}=@$2" "$1"
 }
 
 function configure {
@@ -118,5 +118,7 @@ function tar_src {
 }
 
 function send_src {
-    tar_src $1 | upload "$2/src" file
+    local t=$(mktemp)
+	tar_src $1 > "$t"
+    upload "$2/src" "$t" && rm $t || { rm $t; error "could not upload"; }
 }
