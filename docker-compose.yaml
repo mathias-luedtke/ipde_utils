@@ -1,6 +1,7 @@
 version: '2'
 services:
   apt-cacher-ng:
+    container_name: ipde-cache
     image: sameersbn/apt-cacher-ng:latest
     ports:
       - "3142:3142"
@@ -8,6 +9,7 @@ services:
       - apt-cacher-ng:/var/cache/apt-cacher-ng
     restart: always
   ipde-server:
+    container_name: ipde-server
     image: reapp/server
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
