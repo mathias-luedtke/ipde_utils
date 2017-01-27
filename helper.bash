@@ -5,6 +5,12 @@ set -o pipefail
 sessions_uri="${IPDE_SESSIONS_URI:-http://127.0.0.1:8000/sessions/}"
 builder_image="${IPDE_BUILDER_IMAGE:-reapp/core}"
 
+
+tar_cmd=tar
+if [[ $($tar_cmd --version) =~ ^bsd ]]; then
+    tar_cmd="gtar"
+fi
+
 function error {
     echo $1
     exit ${2/1}
@@ -19,7 +25,7 @@ function get_sessions {
 }
 
 function print_session {
-    curl_xml "$1" | sed -n -e 's!.*label="\([^"]*\)" uri="\([^"]*\)"[^<]*<ipde:state \([^/]*\).*!\2 (\1): \3\n!p'
+    curl_xml "$1" | sed -n -e 's!.*label="\([^"]*\)" uri="\([^"]*\)"[^<]*<ipde:state \([^/]*\).*!\2 (\1): \3!p'
 }
 
 function get_uri_for_label {
@@ -111,14 +117,14 @@ function delete {
 function tar_src {
     d=$(dirname "$1")
     if [ -d "$1" ] ; then
-        tar --exclude-vcs --exclude-backups -cz -C "$d" "$(basename "$1")"
+        $tar_cmd --exclude-vcs --exclude-backups -cz -C "$d" "$(basename "$1")"
     else
-        tar -cz -C "$d" "${1#$d/}"
+        $tar_cmd -cz -C "$d" "${1#$d/}"
     fi    
 }
 
 function send_src {
     local t=$(mktemp)
-	tar_src $1 > "$t"
+    tar_src $1 > "$t"
     upload "$2/src" "$t" && rm $t || { rm $t; error "could not upload"; }
 }
