@@ -1,7 +1,10 @@
 #!/bin/bash -e
+ipde_utils_path=$(cd $(dirname "$BASH_SOURCE") && pwd)
 
-./create_test.sh "$@"
-./build.sh $1
+"$ipde_utils_path/create_test.sh" "$@"
 
-trap './stop.sh $1' INT
-./run.sh $1
+session=$1
+"$ipde_utils_path/build.sh" $session
+
+trap '"$ipde_utils_path/stop.sh" $session' INT
+"$ipde_utils_path/run.sh" $session

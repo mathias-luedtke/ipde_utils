@@ -1,5 +1,8 @@
 #!/bin/bash -e
-source helper.bash
+ipde_utils_path=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+# shellcheck source=helper.sh
+source "$ipde_utils_path/helper.bash"
+
 builder_image="${IPDE_BUILDER_IMAGE:-reapp/testing}"
 
 help="usage: $0 label package [extra_paths *]"
