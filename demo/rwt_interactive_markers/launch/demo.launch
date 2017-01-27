@@ -1,0 +1,11 @@
+<launch>
+  <node name="basic_controls" pkg="interactive_marker_tutorials" type="basic_controls"/>
+  <node name="proxy" pkg="interactive_marker_proxy" type="proxy">
+    <remap from="topic_ns" to="/basic_controls"/>
+    <remap from="target_frame" to="/rotating_frame"/>
+  </node>
+  <node name="tf2_web_republisher" pkg="tf2_web_republisher" type="tf2_web_republisher"/>
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+
+  <node name="webserver" pkg="rwt_interactive_markers" type="webserver" args="$(find rwt_interactive_markers)/html 8080" />
+</launch>

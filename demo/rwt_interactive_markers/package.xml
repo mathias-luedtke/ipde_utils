@@ -1,0 +1,17 @@
+<package format="2">
+  <name>rwt_interactive_markers</name>
+  <version>0.0.0</version>
+  <description>
+  RobotWebTool interactive markers demo
+  </description>
+  <maintainer email="none@none.none">None</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>interactive_marker_tutorials</exec_depend>
+  <exec_depend>interactive_marker_proxy</exec_depend>
+  <exec_depend>tf2_web_republisher</exec_depend>
+  <exec_depend>rosbridge_server</exec_depend>
+  <exec_depend>python-twisted-web</exec_depend>
+</package>
