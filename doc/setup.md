@@ -16,3 +16,12 @@ To start the IPDE server and the Apt cacher, just `cd` into the main directory (
 
 You can confirm that it is running by visiting http://127.0.0.1:8000/sessions/.
 Please note, if you are using the Docker Toolbox on Windows or Mac OS X the server is run into a VirtualBox VM with another IP. You should be able to access it under http://192.168.99.100:8000/sessions/.
+
+# Customization
+
+The server might be configured through addtional settings in `docker-compose.yaml`:
+* `SQLALCHEMY_DATABASE_URI` needs to point to the DB to be used
+* `APT_EXTRA_OPTS` might be used to customize apt, e.g. to use a proxy or cacher
+* `IPDE_TRUSTED_IMAGES` specifies a list of docker images that can be used
+* `IPDE_BIND_VOLUMES` can be used to bind host volumes to the running containers
+* `hostname` is used to set the hostname of the server and for the ROS core
