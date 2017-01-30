@@ -3,16 +3,20 @@ ipde_utils_path=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # shellcheck source=helper.sh
 source "$ipde_utils_path/helper.bash"
 
-help="usage: $0 label"
+help="usage: $0 label [label*]"
 
-label=$1
-shift  || error "no label given, $help"
-
-session=$(find_session "$label")
-
-if [ -z "$session" ]
-then
-  error "could not obtain session URI"
+if [ "$#" -eq 0 ]; then
+    error "no label(s) given, $help"
 fi
 
-delete "$session"
+for label in "$@"
+do
+    session=$(find_session "$label")
+
+    if [ -z "$session" ]
+    then
+      error "could not obtain session URI for '$label'"
+    fi
+
+    delete "$session"
+done
