@@ -4,7 +4,7 @@
 
 In this directory:
 
-1. Install docker: `./setup_docker.sh` (you might need to log out and in again)
+1. Install docker: `setup/setup_docker.sh` (you might need to log out and in again)
 1. `docker-compose up -d` (runs server in detached mode, use `docker-compose stop` for stopping it)
 1. source your catkin workspace **optional**
 1. `./launch.sh test YOUR_PACKAGE_NAME_OR_DIR LAUNCH_FILE_NAME_OR_PATH` (test is the arbitrary name of the session, whitespace needs to be escaped)
@@ -16,7 +16,7 @@ The backend server needs to be started to provide the deployment environment.
 In addition a local APT-proxy will be spawned to speed-up sandbox creation.
 
 ### Set-up
-Install docker(-compose) and pull images: `./setup_docker.sh`. **(requires sudo)**
+Install docker(-compose) and pull images: `setup/setup_docker.sh`. **(requires sudo)**
 This script can be rerun to pull updated images.
 
 ### Start-up
@@ -28,7 +28,7 @@ The server provides a REST interface at http://127.0.0.1:8000/sessions/ and can 
 
 ### Install dependencies
 The required dependencies should be already available on most platforms.
-For ubuntu you can insall them with: `sudo apt-get install -y bash tar curl sed` **(requires sudo)**
+For ubuntu you can insall them with: `sudo apt-get install -y bash tar curl sed`
 
 ### Scripts
 
