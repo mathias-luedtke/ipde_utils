@@ -1,0 +1,9 @@
+- git:
+    uri: https://github.com/stdr-simulator-ros-pkg/stdr_simulator.git
+    local-name: stdr_simulator
+    version: indigo-devel
+
+- git:
+    uri: https://github.com/ros-teleop/teleop_twist_keyboard.git
+    local-name: teleop_twist_keyboard
+    version: master

@@ -26,6 +26,7 @@ A full command line reference can be found in [doc/cli.md](doc/cli.md)
 ## Tutorials
 
 * [RobotWebTools example](doc/rwt_tutorial.md)
+* [STDR example](doc/stdr_tutorial.md)
 
 ## Description
 
