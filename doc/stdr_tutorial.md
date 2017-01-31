@@ -8,7 +8,7 @@ In this example we are going to run the STDR simulator.
 
 First we have to configure our session:
 
-`../create_external.sh stdr stdr_launchers launch/server_with_map_and_gui_plus_robot.launch demo/.rosinstall`
+`./create_external.sh stdr stdr_launchers launch/server_with_map_and_gui_plus_robot.launch demo/.rosinstall`
 
 This works almost like `./launch.sh` and `./deploy.sh`, but it requires the second argument to be the name of a package and the third to a be package-relative path.
 The last argument uplads a `.rosinstall` that points to the code on Github.
