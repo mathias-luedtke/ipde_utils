@@ -2,28 +2,26 @@
 
 same_dir=$(cd "${BASH_SOURCE[0]}" && pwd)
 
-case "$(lsb_release -sc)" in
-"xenial")
-"yakkety")
-"zesty")
-    if ! docker-compose --version
-    then
-        sudo apt-get install -y docker-compose
-    fi
-    if ! docker --version
-    then
-        sudo apt-get install -y docker.io
-        sudo usermod -aG docker $(whoami)
-        sudo su $(whoami) -c "$same_dir/pull_images.sh"
-        echo "Please log-in again to use IPDE"
-    else
-        "$same_dir/pull_images.sh"
-    fi
-    exit
-    ;;
-*)
-    ;;
-esac
+#case "$(lsb_release -sc)" in
+#"xenial" | "yakkety" | "zesty")
+#    if ! docker-compose --version
+#    then
+#        sudo apt-get install -y docker-compose
+#    fi
+#    if ! docker --version
+#    then
+#        sudo apt-get install -y docker.io
+#        sudo usermod -aG docker $(whoami)
+#        sudo su $(whoami) -c "$same_dir/pull_images.sh"
+#        echo "Please log-in again to use IPDE"
+#    else
+#        "$same_dir/pull_images.sh"
+#    fi
+#    exit
+#    ;;
+#*)
+#    ;;
+#esac
 
 if ! docker-compose --version
 then
