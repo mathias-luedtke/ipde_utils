@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-same_dir=$(cd "${BASH_SOURCE[0]}" && pwd)
+same_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 #case "$(lsb_release -sc)" in
 #"xenial" | "yakkety" | "zesty")
