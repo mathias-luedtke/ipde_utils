@@ -24,7 +24,7 @@ pkg_dir=$(get_pkg_dir $pkg)
 
 configure_main "$session" "$(get_pkg_name $pkg_dir)"
 
-send_src "$pkg_dir" "$session"
+send_src_unique "$pkg_dir" "$session" "$@"
 
 for p in "$@"
 do

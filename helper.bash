@@ -128,3 +128,28 @@ function send_src {
     tar_src $1 > "$t"
     upload "$2/src" "$t" && rm $t || { rm $t; error "could not upload"; }
 }
+
+function test_unique_dir {
+    local test_dir
+    local other_dir
+    test_dir=$(cd "$1"; pwd -P)
+    shift
+    for p in "$@"
+    do
+        other_dir=$(cd "$p"; pwd -P)
+        if [[ "$test_dir" == "$other_dir"* ]]; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+function send_src_unique {
+    local path=$1
+    local session=$2
+    shift 2
+    if test_unique_dir "$path" "$@"; then
+        send_src "$path" "$session"
+    fi
+    return 0
+}
